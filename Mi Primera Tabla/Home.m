@@ -10,9 +10,9 @@
 #import "cellMainTable.h"
 
 @interface Home ()
-@property NSMutableArray *userNames;
-@property NSMutableArray *userAges;
-@property NSMutableArray *userImages;
+@property NSMutableArray *chartersNames;
+@property NSMutableArray *charterCountry;
+@property NSMutableArray *charterImages;
 @end
 
 @implementation Home
@@ -32,11 +32,11 @@
 
 //-------------------------------------------------------------------------------
 - (void)initController {
-    self.userNames  = [[NSMutableArray alloc] initWithObjects: @"Tyrion Lannister", @"Daenerys Targaryen", @"Jon Snow", @"Arya Stark", @"Cersei Lannister", nil];
+    self.chartersNames  = [[NSMutableArray alloc] initWithObjects: @"Ana", @"D.Va", @"Hanzo", @"Genji", nil];
     
-    self.userAges  = [[NSMutableArray alloc] initWithObjects: @"38 años", @"22 años", @"25 años", @"16 años", @"42 años", nil];
+    self.charterCountry  = [[NSMutableArray alloc] initWithObjects: @"Egypt", @"South Korea", @"Japan", @"Japan", nil];
 
-    self.userImages = [[NSMutableArray alloc] initWithObjects: @"tyrion.jpg", @"daenerys.jpeg", @"jon.jpg", @"arya.jpg", @"cersei.jpg", nil];
+    self.charterImages = [[NSMutableArray alloc] initWithObjects: @"Ana_portrait.png", @"Dva_portrait.png", @"Hanzo_portrait.png", @"Genji_portrait.png", nil];
 }
 
 /**********************************************************************************************/
@@ -47,7 +47,7 @@
 }
 //-------------------------------------------------------------------------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.userNames.count;
+    return self.chartersNames.count;
 }
 //-------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,9 +63,9 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellMainTable"];
     }
     //Fill cell with info from arrays
-    cell.lblName.text       = self.userNames[indexPath.row];
-    cell.lblAge.text        = self.userAges[indexPath.row];
-    cell.imgUser.image      = [UIImage imageNamed:self.userImages[indexPath.row]];
+    cell.lblName.text       = self.chartersNames[indexPath.row];
+    cell.lblCountry.text        = self.charterCountry[indexPath.row];
+    cell.imgUser.image      = [UIImage imageNamed:self.charterImages[indexPath.row]];
     
     return cell;
 }
@@ -77,9 +77,9 @@
 #pragma mark - Action methods
 /**********************************************************************************************/
 - (IBAction)btnAddPressed:(id)sender {
-    [self.userNames addObject:@"Walter"];
-    [self.userAges addObject:@"37 años"];
-    [self.userImages addObject:@"jon.jpg"];
+    [self.chartersNames addObject:@"Walter"];
+    [self.charterCountry addObject:@"37 años"];
+    [self.charterImages addObject:@"jon.jpg"];
     [self.tblMain reloadData];
 }
 
