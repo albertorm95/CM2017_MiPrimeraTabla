@@ -77,31 +77,32 @@
 #pragma mark - Action methods
 /**********************************************************************************************/
 - (IBAction)btnAddPressed:(id)sender {
-    self.alertView = [UIAlertController alertControllerWithTitle: @"Login"
-                                                         message: @"Input username and password"
+    self.alertView = [UIAlertController alertControllerWithTitle: @"Add new Charter"
+                                                         message: @"Input name and country"
                                                   preferredStyle:UIAlertControllerStyleAlert];
     [self.alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"name";
+        textField.placeholder = @"Name";
         textField.textColor = [UIColor blueColor];
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.borderStyle = UITextBorderStyleRoundedRect;
     }];
     [self.alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"password";
+        textField.placeholder = @"Country";
         textField.textColor = [UIColor blueColor];
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.secureTextEntry = YES;
     }];
     [self.alertView addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSArray * textfields = self.alertView.textFields;
-        UITextField * namefield = textfields[0];
-        UITextField * passwordfiled = textfields[1];
-        NSLog(@"%@:%@",namefield.text,passwordfiled.text);
-        
-    }]];
+            NSArray * textfields = self.alertView.textFields;
+            UITextField * namefield = textfields[0];
+            UITextField * countryfield = textfields[1];
+            [self.chartersNames addObject:namefield.text];
+            [self.charterCountry addObject:countryfield.text];
+            [self.charterImages addObject:@"Ana_portrait.png"];
+            [self.tblMain reloadData];
+        }
+    ]];
     [self presentViewController:self.alertView animated:YES completion:nil];
-    
 
 }
 
