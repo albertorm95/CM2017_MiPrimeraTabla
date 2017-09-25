@@ -77,10 +77,32 @@
 #pragma mark - Action methods
 /**********************************************************************************************/
 - (IBAction)btnAddPressed:(id)sender {
-    [self.chartersNames addObject:@"Walter"];
-    [self.charterCountry addObject:@"37 años"];
-    [self.charterImages addObject:@"jon.jpg"];
-    [self.tblMain reloadData];
+    self.alertView = [UIAlertController alertControllerWithTitle: @"Login"
+                                                         message: @"Input username and password"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+    [self.alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"name";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [self.alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"password";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+        textField.secureTextEntry = YES;
+    }];
+    [self.alertView addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = self.alertView.textFields;
+        UITextField * namefield = textfields[0];
+        UITextField * passwordfiled = textfields[1];
+        NSLog(@"%@:%@",namefield.text,passwordfiled.text);
+        
+    }]];
+    [self presentViewController:self.alertView animated:YES completion:nil];
+    
+
 }
 
 

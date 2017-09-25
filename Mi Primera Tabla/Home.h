@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tblMain;
 - (IBAction)btnAddPressed:(id)sender;
 
+@property (strong, nonatomic) UIAlertController *alertView;
+
 @end
 
