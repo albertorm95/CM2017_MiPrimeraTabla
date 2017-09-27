@@ -77,6 +77,9 @@
 #pragma mark - Action methods
 /**********************************************************************************************/
 - (IBAction)btnAddPressed:(id)sender {
+    
+    
+    
     self.alertView = [UIAlertController alertControllerWithTitle: @"Add new Charter"
                                                          message: @"Input name and country"
                                                   preferredStyle:UIAlertControllerStyleAlert];
